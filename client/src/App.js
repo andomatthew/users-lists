@@ -1,70 +1,68 @@
-import React from 'react'
-import gadjian_logo from './assets/gadjian.png'
-import avatar from './assets/avatar_vector.jpg'
+import React, { useEffect, useState } from 'react'
+import PersonnelCard from './components/Card'
+import Navbar from './components/Navbar.js'
+import MenuList from './components/MenuList'
+import PersonnelSection from './components/PersonnelSection'
+import axios from 'axios'
 
 function App() {
 
+  const [loading, setLoading] = useState(false)
+  const [personnels, setPersonnels] = useState([])
+  const [currentPage, setCurrentPage] = useState(1)
+  const [postPerPage] = useState(4)
+  let page  = currentPage
+
+  useEffect(() => {
+    axios.get('https://randomuser.me/api/?results=28')
+    .then(({data}) => setPersonnels(data.results))
+  }, [])
+
+
+  const indexOfLastPost = currentPage * postPerPage
+  const indexOfFirstPost = indexOfLastPost - postPerPage
+  const currentPosts = personnels.slice(indexOfFirstPost, indexOfLastPost)
+
+  function setPage(action) {
+    action === 'next' ? page++ : page--
+    setCurrentPage(page)
+  }
+
+  console.log(
+    currentPage, 'currentPage',
+    page,'page',
+    postPerPage, 'postPerPage'
+  )
+
   return (
     <div className="App">
-      <navbar className='navbar py-4'>
-        <div className='container'>
-          <div className='navbar-brand'>
-            <img src={gadjian_logo} alt='Gadjian Logo' style={{height: '60px', width: '180px'}}/>
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-            </a>
+      <Navbar/>
+      <div className='container'>
+        <div className='columns'>
+          <div className='column is-one-fifth is-hidden-mobile is-hidden-tablet-only'>
+            <MenuList/>
           </div>
-          <div className='navbar-menu'>
-            <div className='navbar-start'></div>
-            <div className='navbar-end'>
-            <p className='navbar-item '>Halo, Gadjian User</p>
-            <div className='navbar-item'>
-                <img className='is-rounded' src={avatar} alt='avatar'/>
+          <div className='column' style={{backgroundClip: 'content-box', backgroundColor: 'whitesmoke'}}>
+            <PersonnelSection/>
+            <div className='section'>
+              <div className='columns'>
+                {
+                  currentPosts.map((user, index) => 
+                    <div className='column' key={index}>    
+                      <PersonnelCard user={user}/>
+                    </div>
+                  )
+                }
+              </div>
             </div>
-            </div>
+            <footer className='container pb-5'>
+              <div className='content has-text-centered'>
+                <button disabled={currentPage === 1 ? true : false} onClick={() => setPage('previous')} className='button is-light'>Previous Page</button>
+                <button disabled={currentPage === 7 ? true : false} onClick={() => setPage('next')} className='button is-light'>Next Page</button>
+              </div>
+            </footer>
           </div>
         </div>
-      </navbar>
-      <div className='columns'>
-        <div className='column is-one-fifth is-hidden-mobile is-hidden-tablet-only'>
-        <aside class="menu">
-  <p class="menu-label">
-    General
-  </p>
-  <ul class="menu-list">
-    <li><a>Dashboard</a></li>
-    <li><a>Customers</a></li>
-  </ul>
-  <p class="menu-label">
-    Administration
-  </p>
-  <ul class="menu-list">
-    <li><a>Team Settings</a></li>
-    <li>
-      <a class="is-active">Manage Your Team</a>
-      <ul>
-        <li><a>Members</a></li>
-        <li><a>Plugins</a></li>
-        <li><a>Add a member</a></li>
-      </ul>
-    </li>
-    <li><a>Invitations</a></li>
-    <li><a>Cloud Storage Environment Settings</a></li>
-    <li><a>Authentication</a></li>
-  </ul>
-  <p class="menu-label">
-    Transactions
-  </p>
-  <ul class="menu-list">
-    <li><a>Payments</a></li>
-    <li><a>Transfers</a></li>
-    <li><a>Balance</a></li>
-  </ul>
-</aside>
-        </div>
-
       </div>
     </div>
   );
