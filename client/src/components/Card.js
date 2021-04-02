@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 export default function PersonnelCard(props) {
 
   return (
-    <div className='card' style={{borderRadius: '10px', boxShadow: 'none'}}>
-      <div className='card-header' style={{borderBottomColor: 'whitesmoke', marginBottom: '3px'}}>
-        <div style={{display: 'flex', justifyContent: 'space-between', width: '100%', padding: '0 10px'}}>
-          <p className='is-size-5-mobile'>Personnel ID: {props.user.id.value === 'undefined' ? String(new Date()) : props.user.id.value}</p>
+    <div className='card'>
+      <div className='card-header'>
+        <div className='id-container'>
+          <p className='is-size-5-mobile'>Personnel ID: {props.user.id.value}</p>
           <div>
             <span>&#8226;</span>
             <span>&#8226;</span>
@@ -15,9 +15,9 @@ export default function PersonnelCard(props) {
         </div>
       </div>
       <div className='is-flex-mobile is-flex-tablet-only'>
-        <div className='card-image'>
-          <figure className='image'>
-            <img className='p-4' src={props.user.picture.large} style={{borderRadius: '50%'}} />
+        <div className='card-image is-flex-mobile is-align-items-center'>
+          <figure className='image mx-5'>
+            <img id='personnel-image' className='p-4' src={props.user.picture.large} />
           </figure>
         </div>
         <div className='card-content'>
@@ -32,7 +32,7 @@ export default function PersonnelCard(props) {
             }
           </p>
           <p className='is-size-7 has-text-weight-bold is-hidden-mobile is-hidden-tablet-only'>Email</p>
-          <p className=' is-size-6 has-text-weight-light is-hidden-mobile is-hidden-tablet-only'>{props.user.email}</p>
+          <p className='is-size-6 has-text-weight-light is-hidden-mobile is-hidden-tablet-only'>{props.user.email}</p>
         </div>
       </div>
     </div>
