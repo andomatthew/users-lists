@@ -12,7 +12,7 @@ export default function MenuList() {
         </a>
       </li>
       <li>
-        <a>
+        <a style={{color: '#1cbfbd'}}>
           <span className='material-icons'>groups</span>
           <p className='is-size-5 has-text-weight-bold ml-3'>Personnel List</p>
         </a>

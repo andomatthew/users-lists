@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 export default function PersonnelCard(props) {
 
@@ -15,7 +15,7 @@ export default function PersonnelCard(props) {
         </div>
       </div>
       <div className='is-flex-mobile is-flex-tablet-only'>
-        <div className='card-image is-flex-mobile'>
+        <div className='card-image is-flex-mobile is-align-items-center'>
           <figure className='image mx-5'>
             <img id='personnel-image' className='p-4' src={props.user.picture.large} />
           </figure>

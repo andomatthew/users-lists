@@ -1,55 +1,36 @@
-.navbar-brand {
-  display: flex;
-  align-items: center;
-}
-
 .navbar-burger {
   margin-left: 0px;
 }
-
 .gadjian-logo {
   height: 70px;
   width: 150px;
   padding: 0.375rem 0;
 }
-
+#menuList {
+ display: none; 
+}
 .menu-list a {
   display: flex;
   align-items: center;
 }
-
-
 .personnel-section-column {
   background-clip: content-box;
   background-color: whitesmoke; 
   max-width: 1094.42px; 
   height: 800px; 
   position: relative;
-  @media (max-width: 400) {
-    background-color: yellow;
-  }
 }
-
 .personnel-section-container {
   padding: 0.75rem;
   background-clip: content-box; 
   background-color: white;
 }
-
-.upper-column {
-  display: flex;
-  flex-direction: column;
-  padding-left: 0.5rem;
-}
-
 #subtitle {
   color: #1cbfbd;
 }
-
 .input {
   width: 200px;
 }
-
 #search-logo {
   top: 7px;
   padding: 3px;
@@ -57,60 +38,49 @@
   height: 0px;
   width: 0px;
 }
-
 .button-add-personnel {
   background-color: #1cbfbd;
   color: white;
   width: 200px;
 }
-
+.button-add-personnel div {
+  width: 100%;
+}
 .card-container {
   width: 250px;
   max-width: 250px;
 }
-
 .card {
   border-radius: 10px;
   box-shadow: none; 
   width:250px;
 }
-
 .card-header {
   border-bottom: whitesmoke;
   margin-bottom: 3px;
 }
-
 .card-header .id-container {
   display: flex;
   justify-content: space-between;
   width: 100%;
   padding: 0 10px;
 }
-
-.card-image {
-  align-items: center;
-}
-
 #personnel-image {
   border-radius: 50%;
 }
-
 .card-content {
   word-break: break-all;
 }
-
 .button-container {
   position: absolute;
   bottom: 50px;
   left: 400px;
 }
-
 @media all and (max-width: 700px) {
   .input, .button-add-personnel, .card-container, .card{
     width: 100%;
     max-width: none;
   }
-
   .button-container {
     position: relative;
     bottom: auto;
@@ -118,8 +88,16 @@
     display: flex;
     justify-content: center;
   }
-
   .personnel-section-column {
     height: fit-content;
+  }
+  #menuList {
+    display: unset;
+  }
+  #user-logo-mobile {
+    display: unset;
+  }
+  .navbar-end {
+    display: none;
   }
 }
