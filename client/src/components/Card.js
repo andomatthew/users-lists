@@ -17,7 +17,7 @@ export default function PersonnelCard(props) {
       <div className='is-flex-mobile is-flex-tablet-only'>
         <div className='card-image is-flex-mobile is-align-items-center'>
           <figure className='image mx-5'>
-            <img id='personnel-image' className='p-4' src={props.user.picture.large} />
+            <img id='personnel-image' className='p-4' src={props.user.picture.large} alt='UserPhoto' />
           </figure>
         </div>
         <div className='card-content'>
