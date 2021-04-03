@@ -1,5 +1,7 @@
 .navbar-burger {
   margin-left: 0px;
+  border: none;
+  margin-right: 5px;
 }
 .gadjian-logo {
   height: 70px;
@@ -46,6 +48,19 @@
 .button-add-personnel div {
   width: 100%;
 }
+
+.button-list {
+  border: none;
+  width: 100%;
+}
+
+.button-list div {
+  width: 100%;
+}
+
+.button-list:hover {
+  background-color: whitesmoke;
+}
 .card-container {
   width: 250px;
   max-width: 250px;
@@ -76,7 +91,7 @@
   bottom: 50px;
   left: 400px;
 }
-@media all and (max-width: 700px) {
+@media all and (max-width: 768px) {
   .input, .button-add-personnel, .card-container, .card{
     width: 100%;
     max-width: none;
